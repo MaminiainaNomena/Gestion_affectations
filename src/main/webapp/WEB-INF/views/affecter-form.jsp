@@ -37,7 +37,7 @@
                 <select name="codeemp" required>
                   <c:forEach var="e" items="${employes}">
                     <option value="${e.codeemp}" ${affecter.employe.codeemp == e.codeemp ? 'selected' : ''}>
-                      ${e.codeemp} - ${e.nom} ${e.prenom}
+                      ${e.nom} ${e.prenom}
                     </option>
                   </c:forEach>
                 </select>
@@ -48,7 +48,7 @@
                 <select name="codelieu" required>
                   <c:forEach var="l" items="${lieux}">
                     <option value="${l.codelieu}" ${affecter.lieu.codelieu == l.codelieu ? 'selected' : ''}>
-                      ${l.codelieu} - ${l.designation}
+                      ${l.designation}
                     </option>
                   </c:forEach>
                 </select>

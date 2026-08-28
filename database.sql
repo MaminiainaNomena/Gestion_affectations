@@ -1,7 +1,6 @@
 CREATE DATABASE gestion_affectations;
--- Ensuite, se connecter à gestion_affectations.
+\connect gestion_affectations
 -- Hibernate créera/actualisera les tables avec hibernate.hbm2ddl.auto=update.
--- Si vous préférez créer les tables manuellement :
 
 CREATE TABLE IF NOT EXISTS employe (
     codeemp VARCHAR(20) PRIMARY KEY,
@@ -24,10 +23,3 @@ CREATE TABLE IF NOT EXISTS affecter (
     CONSTRAINT fk_affecter_employe FOREIGN KEY (codeemp) REFERENCES employe(codeemp) ON DELETE CASCADE,
     CONSTRAINT fk_affecter_lieu FOREIGN KEY (codelieu) REFERENCES lieu(codelieu) ON DELETE CASCADE
 );
-
-INSERT INTO employe(codeemp, nom, prenom, poste) VALUES
-('E001','Dupont','Jean','Développeur'),('E002','Martin','Sara','Comptable')
-ON CONFLICT DO NOTHING;
-INSERT INTO lieu(codelieu, designation, province) VALUES
-('L001','Siège','Casablanca'),('L002','Agence Nord','Rabat')
-ON CONFLICT DO NOTHING;

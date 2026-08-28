@@ -24,7 +24,11 @@ public class AffecterDAO {
     }
 
     public void save(Affecter a) {
-        execute(s -> s.persist(a));
+        execute(s -> {
+            a.setEmploye(s.getReference(Employe.class, a.getEmploye().getCodeemp()));
+            a.setLieu(s.getReference(Lieu.class, a.getLieu().getCodelieu()));
+            s.persist(a);
+        });
     }
 
     public void update(Affecter a) {
