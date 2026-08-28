@@ -1,0 +1,32 @@
+<%@ page pageEncoding="UTF-8" %>
+<%
+  String notificationMessage = (String) request.getAttribute("notificationMessage");
+  String notificationType = (String) request.getAttribute("notificationType");
+  if (notificationMessage == null) {
+      notificationMessage = (String) session.getAttribute("notificationMessage");
+      notificationType = (String) session.getAttribute("notificationType");
+      session.removeAttribute("notificationMessage");
+      session.removeAttribute("notificationType");
+  }
+%><div class="notification-space<%= notificationMessage == null ? "" : " has-notification" %>"><%
+  if (notificationMessage != null) {
+%>
+  <div class="notification notification-<%= notificationType == null ? "info" : notificationType %>" role="status">
+    <span><%= notificationMessage %></span>
+    <button class="notification-close" type="button" aria-label="Fermer la notification">×</button>
+  </div>
+  <script>
+    (() => {
+      const notificationSpace = document.querySelector('.notification-space');
+      const notification = notificationSpace.querySelector('.notification');
+      const closeButton = notification.querySelector('.notification-close');
+      const closeNotification = () => {
+        notificationSpace.classList.remove('has-notification');
+        notification.remove();
+      };
+      closeButton.addEventListener('click', closeNotification);
+      window.setTimeout(closeNotification, 4000);
+    })();
+  </script>
+<% } %>
+</div>
