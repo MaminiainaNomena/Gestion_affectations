@@ -11,6 +11,7 @@ import java.io.IOException;
 public class LieuServlet extends HttpServlet {
     private final LieuDAO dao=new LieuDAO();
     protected void doGet(HttpServletRequest req,HttpServletResponse resp)throws ServletException,IOException{
+        req.setAttribute("activePage", "lieux");
         String p=req.getPathInfo();
         if(p==null||p.equals("/")){req.setAttribute("lieux",dao.findAll());req.getRequestDispatcher("/WEB-INF/views/lieux.jsp").forward(req,resp);return;}
         if(p.equals("/new")){req.getRequestDispatcher("/WEB-INF/views/lieu-form.jsp").forward(req,resp);return;}

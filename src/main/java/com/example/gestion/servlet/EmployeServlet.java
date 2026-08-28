@@ -11,6 +11,7 @@ import java.io.IOException;
 public class EmployeServlet extends HttpServlet {
     private final EmployeDAO dao = new EmployeDAO();
     protected void doGet(HttpServletRequest req,HttpServletResponse resp)throws ServletException,IOException{
+        req.setAttribute("activePage", "employes");
         String path=req.getPathInfo();
         if(path==null||path.equals("/")){String q=req.getParameter("q");req.setAttribute("employes",q==null||q.isBlank()?dao.findAll():dao.search(q));req.getRequestDispatcher("/WEB-INF/views/employes.jsp").forward(req,resp);return;}
         if(path.equals("/new")){req.getRequestDispatcher("/WEB-INF/views/employe-form.jsp").forward(req,resp);return;}

@@ -3,4 +3,13 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
     <display-name>Gestion des affectations</display-name>
     <welcome-file-list><welcome-file>index.jsp</welcome-file></welcome-file-list>
+    <jsp-config>
+        <jsp-property-group>
+            <description>Encodage uniforme des pages JSP</description>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+            <default-content-type>text/html</default-content-type>
+        </jsp-property-group>
+    </jsp-config>
 </web-app>

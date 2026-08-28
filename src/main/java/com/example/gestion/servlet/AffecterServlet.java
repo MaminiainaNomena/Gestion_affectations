@@ -12,6 +12,7 @@ import java.time.LocalDate;
 public class AffecterServlet extends HttpServlet {
     private final AffecterDAO dao=new AffecterDAO(); private final EmployeDAO employeDAO=new EmployeDAO(); private final LieuDAO lieuDAO=new LieuDAO();
     protected void doGet(HttpServletRequest req,HttpServletResponse resp)throws ServletException,IOException{
+        req.setAttribute("activePage", "affectations");
         String p=req.getPathInfo();
         if(p==null||p.equals("/")){req.setAttribute("affectations",dao.findAll());req.getRequestDispatcher("/WEB-INF/views/affectations.jsp").forward(req,resp);return;}
         if(p.equals("/new")){req.setAttribute("employes",employeDAO.findAll());req.setAttribute("lieux",lieuDAO.findAll());req.getRequestDispatcher("/WEB-INF/views/affecter-form.jsp").forward(req,resp);return;}

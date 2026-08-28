@@ -1,0 +1,9 @@
+<%@ page pageEncoding="UTF-8" %>
+<div class="page-select-wrapper">
+  <select class="page-select" onchange="if(this.value) window.location.href=this.value;" aria-label="Choisir une page">
+    <option value="${pageContext.request.contextPath}/employes" ${activePage == 'employes' ? 'selected' : ''}>Employés</option>
+    <option value="${pageContext.request.contextPath}/affectations" ${activePage == 'affectations' ? 'selected' : ''}>Affectations</option>
+    <option value="${pageContext.request.contextPath}/lieux" ${activePage == 'lieux' ? 'selected' : ''}>Lieux</option>
+  </select>
+  <svg class="icon icon-sm select-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
