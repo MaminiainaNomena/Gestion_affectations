@@ -40,7 +40,7 @@
               <tbody>
                 <c:forEach var="a" items="${affectations}">
                   <tr>
-                    <td><strong>${a.employe.codeemp}</strong> ${a.employe.nom} ${a.employe.prenom}</td>
+                    <td>${a.employe.nom} ${' '} ${a.employe.prenom}</td>
                     <td>${a.lieu.designation}</td>
                     <td>${a.lieu.province}</td>
                     <td class="action-cell">
@@ -60,7 +60,8 @@
                       data-tooltip="Supprimer l'affectation"
                       title="Supprimer l'affectation"
                       aria-label="Supprimer l'affectation"
-                      onclick="return confirm('Supprimer cette affectation ?')"
+                      data-delete-url="${pageContext.request.contextPath}/affectations/delete?codeemp=${a.id.codeemp}&codelieu=${a.id.codelieu}"
+                      data-delete-message="Supprimer cette affectation ?"
                       href="${pageContext.request.contextPath}/affectations/delete?codeemp=${a.id.codeemp}&codelieu=${a.id.codelieu}">
                       <svg class="icon icon-sm" viewBox="0 0 24 24">
                         <path d="M3 6h18"></path>

@@ -30,3 +30,52 @@
   </script>
 <% } %>
 </div>
+<div class="modal" id="delete-modal" hidden>
+  <div class="modal-backdrop" data-modal-close></div>
+  <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title" aria-describedby="delete-modal-message">
+    <h2 id="delete-modal-title">Confirmer la suppression</h2>
+    <p id="delete-modal-message">Cette action est irréversible.</p>
+    <div class="modal-actions">
+      <button class="btn btn-outline" type="button" data-modal-close>Annuler</button>
+      <a class="btn btn-danger" id="delete-modal-confirm" href="#">Supprimer</a>
+    </div>
+  </section>
+</div>
+<script>
+  (() => {
+    const modal = document.querySelector('#delete-modal');
+    const confirmButton = document.querySelector('#delete-modal-confirm');
+    const message = document.querySelector('#delete-modal-message');
+    let lastTrigger;
+
+    const closeModal = () => {
+      modal.hidden = true;
+      if (lastTrigger) {
+        lastTrigger.focus();
+      }
+    };
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-delete-url]');
+      if (!trigger) {
+        return;
+      }
+      event.preventDefault();
+      lastTrigger = trigger;
+      confirmButton.href = trigger.dataset.deleteUrl;
+      message.textContent = trigger.dataset.deleteMessage || 'Cette action est irréversible.';
+      modal.hidden = false;
+      confirmButton.focus();
+    });
+
+    modal.querySelectorAll('[data-modal-close]').forEach((control) => {
+      control.addEventListener('click', closeModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.hidden) {
+        closeModal();
+      }
+    });
+  })();
+</script>

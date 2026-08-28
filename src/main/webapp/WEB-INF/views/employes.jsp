@@ -58,7 +58,7 @@
               <tbody>
                 <c:forEach var="e" items="${employes}">
                   <tr>
-                    <td><strong>${e.codeemp}</strong></td>
+                    <td>${e.codeemp}</td>
                     <td>${e.nom}</td>
                     <td>${e.prenom}</td>
                     <td class="post-cell">
@@ -78,7 +78,8 @@
                           data-tooltip="Supprimer l'employé"
                           title="Supprimer l'employé"
                           aria-label="Supprimer l'employé"
-                          onclick="return confirm('Supprimer cet employé ?')"
+                          data-delete-url="${pageContext.request.contextPath}/employes/delete?id=${e.codeemp}"
+                          data-delete-message="Supprimer cet employé ?"
                           href="${pageContext.request.contextPath}/employes/delete?id=${e.codeemp}">
                           <svg class="icon icon-sm" viewBox="0 0 24 24">
                             <path d="M3 6h18"></path>

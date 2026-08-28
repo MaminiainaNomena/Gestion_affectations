@@ -39,7 +39,7 @@
               <tbody>
                 <c:forEach var="l" items="${lieux}">
                   <tr>
-                    <td><strong>${l.codelieu}</strong></td>
+                    <td>${l.codelieu}</td>
                     <td>${l.designation}</td>
                     <td class="action-cell">
                       ${l.province}
@@ -58,7 +58,8 @@
                           data-tooltip="Supprimer le lieu" 
                           title="Supprimer le lieu" 
                           aria-label="Supprimer le lieu" 
-                          onclick="return confirm('Supprimer ce lieu ?')" 
+                          data-delete-url="${pageContext.request.contextPath}/lieux/delete?id=${l.codelieu}"
+                          data-delete-message="Supprimer ce lieu ?"
                           href="${pageContext.request.contextPath}/lieux/delete?id=${l.codelieu}">
                           <svg class="icon icon-sm" viewBox="0 0 24 24">
                             <path d="M3 6h18"></path>
