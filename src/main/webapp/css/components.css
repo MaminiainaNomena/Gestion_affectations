@@ -208,7 +208,8 @@
   gap: 8px;
 }
 
-.post-cell {
+.post-cell,
+.action-cell {
   position: relative;
   padding-right: 120px !important;
 }
