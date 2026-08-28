@@ -1,6 +1,84 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Affectations - Gestion des affectations</title><link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css?v=3"><link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css?v=3"><link rel="stylesheet" href="${pageContext.request.contextPath}/css/components.css?v=3"></head><body>
-<%@ include file="notification.jspf" %>
-<header class="top-header"><%@ include file="page-select.jspf" %><a class="btn btn-primary" href="${pageContext.request.contextPath}/affectations/new"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> CRÉER</a></header>
-<div class="container"><main class="main-panel"><section class="panel"><div class="table-wrap"><table class="table-crud assignment-table"><thead><tr><th>Employé</th><th>Lieu</th><th>Province</th><th>Date</th></tr></thead><tbody><c:forEach var="a" items="${affectations}"><tr><td><strong>${a.employe.codeemp}</strong> ${a.employe.nom} ${a.employe.prenom}</td><td>${a.lieu.designation}</td><td>${a.lieu.province}</td><td class="action-cell">${a.date}<span class="row-actions"><a class="icon-action icon-edit" data-tooltip="Modifier l'affectation" title="Modifier l'affectation" aria-label="Modifier l'affectation" href="${pageContext.request.contextPath}/affectations/edit?codeemp=${a.id.codeemp}&codelieu=${a.id.codelieu}"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path></svg></a><a class="icon-action icon-delete" data-tooltip="Supprimer l'affectation" title="Supprimer l'affectation" aria-label="Supprimer l'affectation" onclick="return confirm('Supprimer cette affectation ?')" href="${pageContext.request.contextPath}/affectations/delete?codeemp=${a.id.codeemp}&codelieu=${a.id.codelieu}"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 15H6L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg></a></span></td></tr></c:forEach></tbody></table></div></section></main></div></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Affectations - Gestion des affectations</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css?v=3">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css?v=3">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/components.css?v=3">
+  </head>
+  <body>
+    <%@ include file="notification.jspf" %>
+
+    <header class="top-header">
+      <%@ include file="page-select.jspf" %>
+      <a class="btn btn-primary" href="${pageContext.request.contextPath}/affectations/new">
+        <svg class="icon icon-sm" viewBox="0 0 24 24">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        CRÉER
+      </a>
+    </header>
+
+    <div class="container">
+      <main class="main-panel">
+        <section class="panel">
+          <div class="table-wrap">
+            <table class="table-crud assignment-table">
+              <thead>
+                <tr>
+                  <th>Employé</th>
+                  <th>Lieu</th>
+                  <th>Province</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <c:forEach var="a" items="${affectations}">
+                  <tr>
+                    <td><strong>${a.employe.codeemp}</strong> ${a.employe.nom} ${a.employe.prenom}</td>
+                    <td>${a.lieu.designation}</td>
+                    <td>${a.lieu.province}</td>
+                    <td class="action-cell">
+                      ${a.date}
+                      <span class="row-actions">
+                        <a class="icon-action icon-edit"
+                        data-tooltip="Modifier l'affectation"
+                        title="Modifier l'affectation"
+                        aria-label="Modifier l'affectation"
+                        href="${pageContext.request.contextPath}/affectations/edit?codeemp=${a.id.codeemp}&codelieu=${a.id.codelieu}">
+                        <svg class="icon icon-sm" viewBox="0 0 24 24">
+                          <path d="M12 20h9"></path>
+                          <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"></path>
+                        </svg>
+                      </a>
+                      <a class="icon-action icon-delete"
+                      data-tooltip="Supprimer l'affectation"
+                      title="Supprimer l'affectation"
+                      aria-label="Supprimer l'affectation"
+                      onclick="return confirm('Supprimer cette affectation ?')"
+                      href="${pageContext.request.contextPath}/affectations/delete?codeemp=${a.id.codeemp}&codelieu=${a.id.codelieu}">
+                      <svg class="icon icon-sm" viewBox="0 0 24 24">
+                        <path d="M3 6h18"></path>
+                        <path d="M8 6V4h8v2"></path>
+                        <path d="M19 6l-1 15H6L5 6"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </a>
+                  </span>
+                </td>
+              </tr>
+            </c:forEach>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

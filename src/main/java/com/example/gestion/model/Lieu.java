@@ -15,7 +15,8 @@ public class Lieu {
     @Column(name = "province", length = 120, nullable = false)
     private String province;
 
-    public Lieu() {}
+    public Lieu() {
+    }
 
     public Lieu(String codelieu, String designation, String province) {
         this.codelieu = codelieu;
@@ -23,10 +24,27 @@ public class Lieu {
         this.province = province;
     }
 
-    public String getCodelieu() { return codelieu; }
-    public void setCodelieu(String codelieu) { this.codelieu = codelieu; }
-    public String getDesignation() { return designation; }
-    public void setDesignation(String designation) { this.designation = designation; }
-    public String getProvince() { return province; }
-    public void setProvince(String province) { this.province = province; }
+    public String getCodelieu() {
+        return codelieu;
+    }
+
+    public void setCodelieu(String codelieu) {
+        this.codelieu = codelieu;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
 }

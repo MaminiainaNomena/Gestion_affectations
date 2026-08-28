@@ -22,7 +22,8 @@ public class Affecter {
     @Column(name = "date_affectation", nullable = false)
     private LocalDate date;
 
-    public Affecter() {}
+    public Affecter() {
+    }
 
     public Affecter(Employe employe, Lieu lieu, LocalDate date) {
         this.employe = employe;
@@ -31,19 +32,43 @@ public class Affecter {
         this.id = new AffecterId(employe.getCodeemp(), lieu.getCodelieu());
     }
 
-    @PrePersist @PreUpdate
+    @PrePersist
+    @PreUpdate
     private void syncId() {
         if (employe != null && lieu != null) {
             id = new AffecterId(employe.getCodeemp(), lieu.getCodelieu());
         }
     }
 
-    public AffecterId getId() { return id; }
-    public void setId(AffecterId id) { this.id = id; }
-    public Employe getEmploye() { return employe; }
-    public void setEmploye(Employe employe) { this.employe = employe; }
-    public Lieu getLieu() { return lieu; }
-    public void setLieu(Lieu lieu) { this.lieu = lieu; }
-    public LocalDate getDate() { return date; }
-    public void setDate(LocalDate date) { this.date = date; }
+    public AffecterId getId() {
+        return id;
+    }
+
+    public void setId(AffecterId id) {
+        this.id = id;
+    }
+
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
+    }
+
+    public Lieu getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(Lieu lieu) {
+        this.lieu = lieu;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }
